@@ -27,46 +27,66 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             defaults.set(true, forKey: "First")
         }
         
-        let contentView = ContentView().environment(\.managedObjectContext, context)
 
-        // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            
+            
+            let randomCat = randomCatViewController()
+            let listOfCats = listOfCatsViewController()
+            let savedCats = savedCatsViewController()
+            let help = helpViewControlelr()
+            let recognize = recognizeViewController()
+            
+            let tabBarController = UITabBarController()
+            tabBarController.setViewControllers([randomCat, listOfCats, savedCats, recognize, help], animated: false)
+            window.rootViewController = tabBarController
+            
+            
             self.window = window
             window.makeKeyAndVisible()
         }
     }
-
-    func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+    
+    func randomCatViewController() -> UIViewController {
+        let randomCatView = RandomCatView()
+        let randomCatViewController = RandomCatViewController(rootView: randomCatView)
+        randomCatViewController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "magnifyingglass"), tag: 0)
+        return randomCatViewController
+    }
+    
+    func listOfCatsViewController() -> UIViewController {
+        let listOfCatsView = ListOfCatsView()
+        let listController = ListOfCatsViewController(rootView: listOfCatsView)
+        listController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "square.stack.3d.down.right.fill"), tag: 1)
+        return listController
+    }
+    
+    func savedCatsViewController() -> UIViewController {
+        let savedView = SavedCatsView()
+        let savedViewController = SavedCatsViewController(rootView: savedView)
+        savedViewController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "tray.and.arrow.down.fill"), tag: 2)
+        return savedViewController
+    }
+    
+    func helpViewControlelr() -> UIViewController {
+        let helpView = HelpView()
+        let helpViewControlelr = HelpViewController(rootView: helpView)
+        helpViewControlelr.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "questionmark"), tag: 3)
+        return helpViewControlelr
+    }
+    
+    func recognizeViewController() -> UIViewController {
+        let recognizeView = RecognizeView()
+        let recognizeViewControlelr = RecognizeViewController(rootView: recognizeView)
+        recognizeViewControlelr.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "camera.fill"), tag: 4)
+        return recognizeViewControlelr
     }
 
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-    }
-
-    func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
-    }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
-
-        // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        
+        PersistentService.saveContext()
     }
 
 
