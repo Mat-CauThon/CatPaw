@@ -2,4 +2,4 @@
 
 App for Cat Shelter
 Developed with love
-by Roman Mishchenko
+By Roman Mishchenko
