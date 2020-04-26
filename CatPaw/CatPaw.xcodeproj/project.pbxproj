@@ -11,7 +11,6 @@
 		A44C6A5F244BB002005A23E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A5E244BB002005A23E4 /* SceneDelegate.swift */; };
 		A44C6A62244BB002005A23E4 /* CatPaw.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A60244BB002005A23E4 /* CatPaw.xcdatamodeld */; };
 		A44C6A66244BB007005A23E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A44C6A65244BB007005A23E4 /* Assets.xcassets */; };
-		A44C6A69244BB007005A23E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A44C6A68244BB007005A23E4 /* Preview Assets.xcassets */; };
 		A44C6A6C244BB007005A23E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44C6A6A244BB007005A23E4 /* LaunchScreen.storyboard */; };
 		A44C6A74244BB59F005A23E4 /* PersistentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A73244BB59F005A23E4 /* PersistentService.swift */; };
 		A44C6A77244BB86A005A23E4 /* RandomCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A76244BB86A005A23E4 /* RandomCatViewController.swift */; };
@@ -24,6 +23,14 @@
 		A44C6A89244BC206005A23E4 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A88244BC206005A23E4 /* HelpViewController.swift */; };
 		A44C6A8C244BC2C7005A23E4 /* RecognizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A8B244BC2C7005A23E4 /* RecognizeView.swift */; };
 		A44C6A8E244BC2D3005A23E4 /* RecognizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A8D244BC2D3005A23E4 /* RecognizeViewController.swift */; };
+		A44C6A91244BC6BA005A23E4 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A90244BC6BA005A23E4 /* Networking.swift */; };
+		A44C6A94244BC7BB005A23E4 /* CatsSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A93244BC7BB005A23E4 /* CatsSource.swift */; };
+		A44C6A98244BC814005A23E4 /* CatClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A97244BC814005A23E4 /* CatClass.swift */; };
+		A44C6A9A244BCBA3005A23E4 /* UIViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A99244BCBA3005A23E4 /* UIViewControllerDelegate.swift */; };
+		A44C6A9C244BCE6D005A23E4 /* UIViewControllerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A9B244BCE6D005A23E4 /* UIViewControllerExtention.swift */; };
+		A45B35D6244FC3BB0084738F /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B35D5244FC3BB0084738F /* Breed.swift */; };
+		A48F0AC8245476FD00B203DE /* CodableCatClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F0AC7245476FD00B203DE /* CodableCatClass.swift */; };
+		A48F0ACC24548C0600B203DE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F0ACB24548C0600B203DE /* ActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +39,6 @@
 		A44C6A5E244BB002005A23E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A44C6A61244BB002005A23E4 /* CatPaw.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CatPaw.xcdatamodel; sourceTree = "<group>"; };
 		A44C6A65244BB007005A23E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A44C6A68244BB007005A23E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A44C6A6B244BB007005A23E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A44C6A6D244BB007005A23E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A44C6A73244BB59F005A23E4 /* PersistentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentService.swift; sourceTree = "<group>"; };
@@ -46,6 +52,14 @@
 		A44C6A88244BC206005A23E4 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		A44C6A8B244BC2C7005A23E4 /* RecognizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeView.swift; sourceTree = "<group>"; };
 		A44C6A8D244BC2D3005A23E4 /* RecognizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeViewController.swift; sourceTree = "<group>"; };
+		A44C6A90244BC6BA005A23E4 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		A44C6A93244BC7BB005A23E4 /* CatsSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsSource.swift; sourceTree = "<group>"; };
+		A44C6A97244BC814005A23E4 /* CatClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatClass.swift; sourceTree = "<group>"; };
+		A44C6A99244BCBA3005A23E4 /* UIViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerDelegate.swift; sourceTree = "<group>"; };
+		A44C6A9B244BCE6D005A23E4 /* UIViewControllerExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtention.swift; sourceTree = "<group>"; };
+		A45B35D5244FC3BB0084738F /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
+		A48F0AC7245476FD00B203DE /* CodableCatClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableCatClass.swift; sourceTree = "<group>"; };
+		A48F0ACB24548C0600B203DE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,26 +94,16 @@
 			children = (
 				A44C6A5C244BB002005A23E4 /* AppDelegate.swift */,
 				A44C6A5E244BB002005A23E4 /* SceneDelegate.swift */,
-				A44C6A8F244BC2D8005A23E4 /* Recognize */,
-				A44C6A8A244BC20B005A23E4 /* Help */,
-				A44C6A85244BC088005A23E4 /* SavedCats */,
-				A44C6A80244BBD68005A23E4 /* ListOfCats */,
-				A44C6A7A244BB917005A23E4 /* RandomCat */,
+				A45E4F3D2454ACE0006FBCFD /* Model */,
+				A44C6A92244BC6BF005A23E4 /* Networking */,
+				A45E4F3C2454AC40006FBCFD /* Views & Controllers */,
 				A44C6A75244BB5A8005A23E4 /* CoreDara Stuff */,
+				A44C6A9D244BCE8A005A23E4 /* Extentions */,
 				A44C6A65244BB007005A23E4 /* Assets.xcassets */,
 				A44C6A6A244BB007005A23E4 /* LaunchScreen.storyboard */,
 				A44C6A6D244BB007005A23E4 /* Info.plist */,
-				A44C6A67244BB007005A23E4 /* Preview Content */,
 			);
 			path = CatPaw;
-			sourceTree = "<group>";
-		};
-		A44C6A67244BB007005A23E4 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				A44C6A68244BB007005A23E4 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		A44C6A75244BB5A8005A23E4 /* CoreDara Stuff */ = {
@@ -154,6 +158,55 @@
 				A44C6A8B244BC2C7005A23E4 /* RecognizeView.swift */,
 			);
 			path = Recognize;
+			sourceTree = "<group>";
+		};
+		A44C6A92244BC6BF005A23E4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A44C6A90244BC6BA005A23E4 /* Networking.swift */,
+				A48F0AC7245476FD00B203DE /* CodableCatClass.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A44C6A9D244BCE8A005A23E4 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				A44C6A9B244BCE6D005A23E4 /* UIViewControllerExtention.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		A45E4F3C2454AC40006FBCFD /* Views & Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A48F0ACD2454AA5400B203DE /* Support */,
+				A44C6A8A244BC20B005A23E4 /* Help */,
+				A44C6A8F244BC2D8005A23E4 /* Recognize */,
+				A44C6A85244BC088005A23E4 /* SavedCats */,
+				A44C6A80244BBD68005A23E4 /* ListOfCats */,
+				A44C6A7A244BB917005A23E4 /* RandomCat */,
+			);
+			path = "Views & Controllers";
+			sourceTree = "<group>";
+		};
+		A45E4F3D2454ACE0006FBCFD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A45B35D5244FC3BB0084738F /* Breed.swift */,
+				A44C6A97244BC814005A23E4 /* CatClass.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A48F0ACD2454AA5400B203DE /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				A44C6A93244BC7BB005A23E4 /* CatsSource.swift */,
+				A48F0ACB24548C0600B203DE /* ActivityIndicator.swift */,
+				A44C6A99244BCBA3005A23E4 /* UIViewControllerDelegate.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,7 +268,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A44C6A6C244BB007005A23E4 /* LaunchScreen.storyboard in Resources */,
-				A44C6A69244BB007005A23E4 /* Preview Assets.xcassets in Resources */,
 				A44C6A66244BB007005A23E4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,12 +280,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				A44C6A82244BC05C005A23E4 /* SavedCatsView.swift in Sources */,
+				A44C6A9C244BCE6D005A23E4 /* UIViewControllerExtention.swift in Sources */,
+				A48F0AC8245476FD00B203DE /* CodableCatClass.swift in Sources */,
 				A44C6A74244BB59F005A23E4 /* PersistentService.swift in Sources */,
 				A44C6A5D244BB002005A23E4 /* AppDelegate.swift in Sources */,
 				A44C6A79244BB889005A23E4 /* RandomCatView.swift in Sources */,
+				A44C6A9A244BCBA3005A23E4 /* UIViewControllerDelegate.swift in Sources */,
 				A44C6A77244BB86A005A23E4 /* RandomCatViewController.swift in Sources */,
 				A44C6A87244BC1FC005A23E4 /* HelpView.swift in Sources */,
+				A48F0ACC24548C0600B203DE /* ActivityIndicator.swift in Sources */,
+				A45B35D6244FC3BB0084738F /* Breed.swift in Sources */,
 				A44C6A5F244BB002005A23E4 /* SceneDelegate.swift in Sources */,
+				A44C6A94244BC7BB005A23E4 /* CatsSource.swift in Sources */,
+				A44C6A91244BC6BA005A23E4 /* Networking.swift in Sources */,
 				A44C6A89244BC206005A23E4 /* HelpViewController.swift in Sources */,
 				A44C6A62244BB002005A23E4 /* CatPaw.xcdatamodeld in Sources */,
 				A44C6A8C244BC2C7005A23E4 /* RecognizeView.swift in Sources */,
@@ -241,6 +300,7 @@
 				A44C6A7E244BBD2A005A23E4 /* ListOfCatsView.swift in Sources */,
 				A44C6A7C244BBD17005A23E4 /* ListOfCatsViewController.swift in Sources */,
 				A44C6A8E244BC2D3005A23E4 /* RecognizeViewController.swift in Sources */,
+				A44C6A98244BC814005A23E4 /* CatClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -49,21 +49,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func randomCatViewController() -> UIViewController {
-        let randomCatView = RandomCatView()
+        let catsSource = CatsSource()
+        let randomCatView = RandomCatView(source: catsSource)
         let randomCatViewController = RandomCatViewController(rootView: randomCatView)
+        randomCatViewController.getCat()
         randomCatViewController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "magnifyingglass"), tag: 0)
         return randomCatViewController
     }
     
     func listOfCatsViewController() -> UIViewController {
-        let listOfCatsView = ListOfCatsView()
+        let catsSource = CatsSource()
+        let listOfCatsView = ListOfCatsView(source: catsSource)
         let listController = ListOfCatsViewController(rootView: listOfCatsView)
         listController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "square.stack.3d.down.right.fill"), tag: 1)
         return listController
     }
     
     func savedCatsViewController() -> UIViewController {
-        let savedView = SavedCatsView()
+        let catsSource = CatsSource()
+        let savedView = SavedCatsView(source: catsSource)
         let savedViewController = SavedCatsViewController(rootView: savedView)
         savedViewController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "tray.and.arrow.down.fill"), tag: 2)
         return savedViewController
@@ -86,7 +90,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         
-        PersistentService.saveContext()
+        
+        
     }
 
 
