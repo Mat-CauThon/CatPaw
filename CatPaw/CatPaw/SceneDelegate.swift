@@ -31,10 +31,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             
-            
-            let randomCat = randomCatViewController()
-            let listOfCats = listOfCatsViewController()
-            let savedCats = savedCatsViewController()
+            let catsSource = CatsSource()
+            let savedCats = savedCatsViewController(catsSource: catsSource)
+            let randomCat = randomCatViewController(catsSource: catsSource)
+            let listOfCats = listOfCatsViewController(catsSource: catsSource)
             let help = helpViewControlelr()
             let recognize = recognizeViewController()
             
@@ -48,25 +48,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    func randomCatViewController() -> UIViewController {
-        let catsSource = CatsSource()
+    func randomCatViewController(catsSource: CatsSource) -> RandomCatViewController {
         let randomCatView = RandomCatView(source: catsSource)
-        let randomCatViewController = RandomCatViewController(rootView: randomCatView)
+        let randomCatViewController = RandomCatViewController(rootView: randomCatView/*, saved: saved*/)
         randomCatViewController.getCat()
         randomCatViewController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "magnifyingglass"), tag: 0)
         return randomCatViewController
     }
     
-    func listOfCatsViewController() -> UIViewController {
-        let catsSource = CatsSource()
+    func listOfCatsViewController(catsSource: CatsSource) -> UIViewController {
         let listOfCatsView = ListOfCatsView(source: catsSource)
         let listController = ListOfCatsViewController(rootView: listOfCatsView)
+        listController.getBreeds()
         listController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "square.stack.3d.down.right.fill"), tag: 1)
         return listController
     }
     
-    func savedCatsViewController() -> UIViewController {
-        let catsSource = CatsSource()
+    func savedCatsViewController(catsSource: CatsSource) -> UIViewController {
         let savedView = SavedCatsView(source: catsSource)
         let savedViewController = SavedCatsViewController(rootView: savedView)
         savedViewController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "tray.and.arrow.down.fill"), tag: 2)

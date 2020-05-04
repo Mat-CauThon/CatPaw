@@ -11,4 +11,5 @@ import Foundation
 // used for error alarm in Networking or CoreData
 protocol UIViewControllerDelegate {
     func alarm(message: String)
+    var queryItems: [URLQueryItem] {get set}
 }

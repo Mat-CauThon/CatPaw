@@ -10,21 +10,23 @@ import Foundation
 import SwiftUI
 import Combine
 
+
+
 final class RandomCatViewController: UIHostingController<RandomCatView>, UIViewControllerDelegate {
     
-    
+    private let loadLimit = 4
+    var queryItems: [URLQueryItem] = [URLQueryItem(name: "page", value: "1"), URLQueryItem(name: "mime_types", value: "jpg"),URLQueryItem(name: "limit", value: "4")]
     private var randomToken: Cancellable?
     private var network: Networking?
-    private var oldCat: CatClass?
     
-    func alarm(message: String) {
+    public func alarm(message: String) {
         self.presentAlert(with: message)
         self.rootView.source.randomState = .failed
     }
-    
+
     override init(rootView: RandomCatView) {
         super.init(rootView: rootView)
-        network = Networking(url: "https://api.thecatapi.com/v1/images/search", delegate: self, limit: 1)
+        network = Networking(delegate: self)
         configureCommunication()
     }
     
@@ -37,22 +39,53 @@ final class RandomCatViewController: UIHostingController<RandomCatView>, UIViewC
     }
     
     func getCat() {
-        network?.loadCats{ [weak self] randomCat in
-            DispatchQueue.main.async {
-                if let newCat = randomCat {
-                    self?.oldCat = newCat
-                    self?.rootView.source.randomCat = newCat
-                    self?.rootView.source.randomState = .ready
+        if loadLimit - self.rootView.source.randomCats.count > 0 {
+            queryItems.removeLast()
+            queryItems.append(URLQueryItem(name: "limit", value: String(loadLimit - self.rootView.source.randomCats.count)))
+            network?.loadCats(items: queryItems){ [weak self] randomCat in
+                DispatchQueue.main.async {
+                    if let newCat = randomCat {
+                        self?.rootView.source.randomCats.append(newCat)
+                        if self!.rootView.source.randomCats.count >= self!.loadLimit {
+                            self?.rootView.source.randomState = .ready
+                        }
+                    }
                 }
             }
+        }
+    }
+    private func getSubCat() {
+        
+        let last = self.rootView.source.randomCats.removeFirst()
+        print("last id = \(last.id)")
+        if self.rootView.source.randomCats.count < 1 {
+            self.rootView.source.randomState = .loading
+        }
+        getCat()
+    }
+    
+    private func configureCommunication() {
+        randomToken = rootView.publisher.sink { [weak self] message in
+            
+            switch message {
+                case .load:
+                    self?.rootView.source.randomState = .loading
+                    self?.getCat()
+                case .add:
+                    self?.rootView.source.save()
+                    self?.getSubCat()
+                case .delete:
+                    self?.getSubCat()
+                case .sort:
+                    print("Sort in random (error in messages)")
+                case .none:
+                    print("Nothing there")
+            }
+            
             
         }
     }
     
-    func configureCommunication() {
-        randomToken = rootView.publisher.sink { [weak self] in
-            self?.rootView.source.randomState = .loading
-            self?.getCat()
-        }
-    }
 }
+
+

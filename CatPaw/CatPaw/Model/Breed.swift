@@ -9,23 +9,24 @@
 import Foundation
 
 final class Breed {
+    
+    var id: String
     var adaptability: Int
-    var affectionLevel: Int
-    var dogFriendly: Int
-    var energyLevel: Int
+    var intelligence: Int
+    var vocalisation: Int
     var grooming: Int
     var hairless: Int
     var desc: String
     var hypoallergenic: Int
     var name: String
-    var temperament: [String]
+    var temperament: String
     var rare: Int
     
-    init(adaptability: Int, affectionLevel: Int, dogFriendly: Int, energyLevel: Int, grooming: Int, hairless: Int, desc: String, hypoallergenic: Int, name: String, temperament: [String], rare: Int) {
+    init(id: String, adaptability: Int, intelligence: Int, vocalisation: Int, grooming: Int, hairless: Int, desc: String, hypoallergenic: Int, name: String, temperament: String, rare: Int) {
+        self.id = id
         self.adaptability = adaptability
-        self.affectionLevel = affectionLevel
-        self.dogFriendly = dogFriendly
-        self.energyLevel = energyLevel
+        self.intelligence = intelligence
+        self.vocalisation = vocalisation
         self.grooming = grooming
         self.hairless = hairless
         self.desc = desc
