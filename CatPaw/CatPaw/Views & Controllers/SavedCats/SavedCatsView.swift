@@ -18,12 +18,8 @@ struct SavedCatsView: View {
         List {
             ForEach(source.savedCats, id: \.id) { cat in
                 
-                VStack {
-                    Text(cat.breeds.last?.name ?? "Unknown breed")
-                    Image(uiImage: cat.image)
-                        .resizable()
-                        .aspectRatio(1, contentMode: .fit)
-                }   
+                CatRow(cat: cat)
+                
             }
         }
     }

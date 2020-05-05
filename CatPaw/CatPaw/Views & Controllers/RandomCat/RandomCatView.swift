@@ -16,12 +16,9 @@ struct RandomCatView: View {
     @State var fillPoint = 0.0
     public let publisher = PassthroughSubject<Message,Never>()
    
-    
     private var animation: Animation {
         Animation.linear(duration: 1).repeatForever(autoreverses: false)
     }
-    
-    
     
     private func buttonView(imgSystmeName: String, color: Color) -> some View {
         var view: some View {
@@ -80,4 +77,5 @@ struct RandomCatView: View {
             }
         }
     }
+    
 }

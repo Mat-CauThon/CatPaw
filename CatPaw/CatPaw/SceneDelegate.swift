@@ -26,23 +26,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             print("First")
             defaults.set(true, forKey: "First")
         }
-        
 
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            
             let catsSource = CatsSource()
             let savedCats = savedCatsViewController(catsSource: catsSource)
             let randomCat = randomCatViewController(catsSource: catsSource)
             let listOfCats = listOfCatsViewController(catsSource: catsSource)
             let help = helpViewControlelr()
             let recognize = recognizeViewController()
-            
             let tabBarController = UITabBarController()
             tabBarController.setViewControllers([randomCat, listOfCats, savedCats, recognize, help], animated: false)
             window.rootViewController = tabBarController
-            
-            
             self.window = window
             window.makeKeyAndVisible()
         }
@@ -67,6 +62,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func savedCatsViewController(catsSource: CatsSource) -> UIViewController {
         let savedView = SavedCatsView(source: catsSource)
         let savedViewController = SavedCatsViewController(rootView: savedView)
+        savedViewController.load()
         savedViewController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "tray.and.arrow.down.fill"), tag: 2)
         return savedViewController
     }

@@ -18,7 +18,6 @@ struct CatRow: View {
                     .bold()
                 Spacer()
             }
-            
             Image(uiImage: cat.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)

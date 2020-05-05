@@ -11,7 +11,6 @@
 		A44C6A5D244BB002005A23E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A5C244BB002005A23E4 /* AppDelegate.swift */; };
 		A44C6A5F244BB002005A23E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A5E244BB002005A23E4 /* SceneDelegate.swift */; };
 		A44C6A62244BB002005A23E4 /* CatPaw.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A60244BB002005A23E4 /* CatPaw.xcdatamodeld */; };
-		A44C6A66244BB007005A23E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A44C6A65244BB007005A23E4 /* Assets.xcassets */; };
 		A44C6A6C244BB007005A23E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A44C6A6A244BB007005A23E4 /* LaunchScreen.storyboard */; };
 		A44C6A74244BB59F005A23E4 /* PersistentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A73244BB59F005A23E4 /* PersistentService.swift */; };
 		A44C6A77244BB86A005A23E4 /* RandomCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A76244BB86A005A23E4 /* RandomCatViewController.swift */; };
@@ -31,6 +30,9 @@
 		A44C6A9C244BCE6D005A23E4 /* UIViewControllerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A9B244BCE6D005A23E4 /* UIViewControllerExtention.swift */; };
 		A456EB0A2455ED5800D45E38 /* CodableBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456EB092455ED5800D45E38 /* CodableBreed.swift */; };
 		A4593BC124601BD20010239E /* CatSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4593BC024601BD20010239E /* CatSwipeView.swift */; };
+		A4593BC32460263B0010239E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4593BC22460263B0010239E /* Database.swift */; };
+		A4593C05246057C10010239E /* BaseCat+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4593C01246057C10010239E /* BaseCat+CoreDataClass.swift */; };
+		A4593C07246057C10010239E /* BaseBreed+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4593C03246057C10010239E /* BaseBreed+CoreDataClass.swift */; };
 		A45B35D6244FC3BB0084738F /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45B35D5244FC3BB0084738F /* Breed.swift */; };
 		A48F0AC8245476FD00B203DE /* CodableCatClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F0AC7245476FD00B203DE /* CodableCatClass.swift */; };
 		A48F0ACC24548C0600B203DE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F0ACB24548C0600B203DE /* ActivityIndicator.swift */; };
@@ -44,7 +46,6 @@
 		A44C6A5C244BB002005A23E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A44C6A5E244BB002005A23E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A44C6A61244BB002005A23E4 /* CatPaw.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CatPaw.xcdatamodel; sourceTree = "<group>"; };
-		A44C6A65244BB007005A23E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A44C6A6B244BB007005A23E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A44C6A6D244BB007005A23E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A44C6A73244BB59F005A23E4 /* PersistentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentService.swift; sourceTree = "<group>"; };
@@ -65,6 +66,9 @@
 		A44C6A9B244BCE6D005A23E4 /* UIViewControllerExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtention.swift; sourceTree = "<group>"; };
 		A456EB092455ED5800D45E38 /* CodableBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableBreed.swift; sourceTree = "<group>"; };
 		A4593BC024601BD20010239E /* CatSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatSwipeView.swift; sourceTree = "<group>"; };
+		A4593BC22460263B0010239E /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		A4593C01246057C10010239E /* BaseCat+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseCat+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A4593C03246057C10010239E /* BaseBreed+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseBreed+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A45B35D5244FC3BB0084738F /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
 		A48F0AC7245476FD00B203DE /* CodableCatClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableCatClass.swift; sourceTree = "<group>"; };
 		A48F0ACB24548C0600B203DE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -108,7 +112,6 @@
 				A44C6A92244BC6BF005A23E4 /* Networking */,
 				A45E4F3C2454AC40006FBCFD /* Views & Controllers */,
 				A44C6A75244BB5A8005A23E4 /* CoreDara Stuff */,
-				A44C6A65244BB007005A23E4 /* Assets.xcassets */,
 				A44C6A6A244BB007005A23E4 /* LaunchScreen.storyboard */,
 				A44C6A6D244BB007005A23E4 /* Info.plist */,
 			);
@@ -118,8 +121,11 @@
 		A44C6A75244BB5A8005A23E4 /* CoreDara Stuff */ = {
 			isa = PBXGroup;
 			children = (
+				A4593C01246057C10010239E /* BaseCat+CoreDataClass.swift */,
+				A4593C03246057C10010239E /* BaseBreed+CoreDataClass.swift */,
 				A44C6A73244BB59F005A23E4 /* PersistentService.swift */,
 				A44C6A60244BB002005A23E4 /* CatPaw.xcdatamodeld */,
+				A4593BC22460263B0010239E /* Database.swift */,
 			);
 			path = "CoreDara Stuff";
 			sourceTree = "<group>";
@@ -283,7 +289,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A44C6A6C244BB007005A23E4 /* LaunchScreen.storyboard in Resources */,
-				A44C6A66244BB007005A23E4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A44C6A82244BC05C005A23E4 /* SavedCatsView.swift in Sources */,
+				A4593C05246057C10010239E /* BaseCat+CoreDataClass.swift in Sources */,
 				A44C6A9C244BCE6D005A23E4 /* UIViewControllerExtention.swift in Sources */,
 				A48F0AC8245476FD00B203DE /* CodableCatClass.swift in Sources */,
 				A44C6A74244BB59F005A23E4 /* PersistentService.swift in Sources */,
@@ -304,9 +310,11 @@
 				A44C6A77244BB86A005A23E4 /* RandomCatViewController.swift in Sources */,
 				A44C6A87244BC1FC005A23E4 /* HelpView.swift in Sources */,
 				A48F0ACC24548C0600B203DE /* ActivityIndicator.swift in Sources */,
+				A4593BC32460263B0010239E /* Database.swift in Sources */,
 				A45B35D6244FC3BB0084738F /* Breed.swift in Sources */,
 				A44C6A5F244BB002005A23E4 /* SceneDelegate.swift in Sources */,
 				A44C6A94244BC7BB005A23E4 /* CatsSource.swift in Sources */,
+				A4593C07246057C10010239E /* BaseBreed+CoreDataClass.swift in Sources */,
 				A44C6A91244BC6BA005A23E4 /* Networking.swift in Sources */,
 				A44C6A89244BC206005A23E4 /* HelpViewController.swift in Sources */,
 				A44C6A62244BB002005A23E4 /* CatPaw.xcdatamodeld in Sources */,
@@ -455,7 +463,6 @@
 		A44C6A71244BB007005A23E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CatPaw/Preview Content\"";
 				DEVELOPMENT_TEAM = 2J4MPK85U4;
@@ -476,7 +483,6 @@
 		A44C6A72244BB007005A23E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CatPaw/Preview Content\"";
 				DEVELOPMENT_TEAM = 2J4MPK85U4;

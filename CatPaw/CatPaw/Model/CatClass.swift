@@ -12,31 +12,27 @@ import SwiftUI
 final class CatClass: Identifiable {
     
     public var id: String
-    private var url: URL
-    private var width: Int
-    private var height: Int
     public var image: UIImage
     public var breeds: [Breed]
-    
-    public var drag : CGFloat = 0.0
-    public var degree : Double = 0.0
-    
-    // important: dont call in another place or create background thread before
-    init(id: String, url: URL, width: Int, height: Int, breeds: [Breed]) {
+    public var liked = false
+    // important: be careful when call without background thread
+    init(id: String, url: URL?, breeds: [Breed], image: Data?) {
         self.id = id
-        self.url = url
-        self.width = width
-        self.height = height
         self.image = UIImage(systemName: "xmark.octagon.fill")!
         self.breeds = breeds
         
-        // i don't create another thread, cause CatClass init called in background thread in Networking class
-        if let data = try? Data(contentsOf: url) {
-            if let dImage = UIImage(data: data) {
-                self.image = dImage
+        
+        if let img = image { // load from database
+            self.image = UIImage(data: img) ?? UIImage(systemName: "xmark.octagon.fill")!
+        } else { // load from web in background thread from Networking class
+            if let safeUrl = url {
+                if let data = try? Data(contentsOf: safeUrl) {
+                    if let dImage = UIImage(data: data) {
+                        self.image = dImage
+                    }
+                }
             }
         }
-        
     }
 }
 

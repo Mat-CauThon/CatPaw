@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class PersistentService {
+final class PersistentService {
     private init() {}
     static var context: NSManagedObjectContext {
         return persistentContainer.viewContext

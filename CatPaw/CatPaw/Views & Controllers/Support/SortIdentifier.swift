@@ -9,11 +9,12 @@
 import Foundation
 
 enum SortIdentifier: Int {
-    case Alphabet = 0, Adaptability
-    , Rare
-    , Intelligence
-    , Grooming
-    , Hairless
-    , Vocalisation
-    , Hypoallergenic
+    case Alphabet = 0,
+    Adaptability,
+    Rare,
+    Intelligence,
+    Grooming,
+    Hairless,
+    Vocalisation,
+    Hypoallergenic
 }

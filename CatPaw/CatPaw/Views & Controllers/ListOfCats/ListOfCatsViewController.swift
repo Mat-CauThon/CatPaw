@@ -12,17 +12,19 @@ import Combine
 
 final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIViewControllerDelegate {
     
-    var queryItems: [URLQueryItem] = [URLQueryItem(name: "limit", value: "1"), URLQueryItem(name: "page", value: "1"), URLQueryItem(name: "mime_types", value: "jpg")]
+    internal var queryItems: [URLQueryItem] = [URLQueryItem(name: "limit", value: "1"), URLQueryItem(name: "page", value: "1"), URLQueryItem(name: "mime_types", value: "jpg")]
     private var catsToken: Cancellable?
     private var loadBreedToken: Cancellable?
     private var network: Networking?
+    private var database: Database?
     
-    func alarm(message: String) {
+    public func alarm(message: String) {
         self.presentAlert(with: message)
     }
     
     override init(rootView: ListOfCatsView) {
         super.init(rootView: rootView)
+        database = Database()
         network = Networking(delegate: self)
         configureCommunication()
     }
@@ -31,62 +33,47 @@ final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIVie
         fatalError("init(coder:) has not been implemented")
     }
     
-    func getCat() {
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+    }
+    
+    private func getCat() {
         network?.loadCats(items: queryItems){ [weak self] randomCat in
             DispatchQueue.main.async {
                 if let newCat = randomCat {
                     self?.rootView.source.cats.append(newCat)
-//                    self?.rootView.source.cats.sort(by: { (first, second) -> Bool in
-//                        return first.breeds.last!.name < second.breeds.last!.name
-//                    })
                     self?.rootView.source.breedState[(self?.rootView.source.cats.count)!-1] = .ready
+                    self?.database?.saveCat(cat: newCat)
                 }
             }
         }
     }
     
-    func getBreeds() {
-    
+    public func getBreeds() {
         network?.loadBreeds { [weak self] breedList in
             DispatchQueue.main.async {
                 if let safeBreeds = breedList {
-                    self?.rootView.source.breeds = safeBreeds
+                    self?.database?.saveBreeds(breeds: safeBreeds)
                     for i in 0..<safeBreeds.count {
-                        self?.rootView.source.breedState.append(.loading)
-                        self?.queryItems.append(URLQueryItem(name: "breed_id", value: safeBreeds[i].id))
-                        self?.getCat()
-                        self?.queryItems.removeLast()
+                        if let cat = self?.database?.loadCatForBreed(breedId: safeBreeds[i].id) {
+                            self?.rootView.source.cats.append(cat)
+                            self?.rootView.source.breedState.append(.ready)
+                        } else {
+                            self?.rootView.source.breedState.append(.loading)
+                            self?.queryItems.append(URLQueryItem(name: "breed_id", value: safeBreeds[i].id))
+                            self?.getCat()
+                            self?.queryItems.removeLast()
+                        }
                     }
                 }
             }
         }
-    
     }
     
-    
-    func configureCommunication() {
-        catsToken = rootView.publisher.sink { [weak self] message in
-            switch message {
-                case .load:
-                    self?.getBreeds()
-                case .sort:
-                    self?.sortCats()
-                case .delete:
-                    print("Delete in list (error in messages)")
-                case .add:
-                    print("Add in list (error in messages)")
-                case .none :
-                print("Nothing there")
-            }
-            
-        }
-    }
-    
-    func sortCats() {
+    private func sortCats() {
         let currentRaw = (self.rootView.source.catsSortedIndex + 1) % self.rootView.items.count
         let currentIndex = SortIdentifier(rawValue: currentRaw)
         self.rootView.source.catsSortedIndex = currentRaw
-        
         self.rootView.source.cats.sort { (first, second) -> Bool in
             switch currentIndex {
             case .Alphabet:
@@ -110,8 +97,23 @@ final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIVie
                 return true
             }
         }
-
     }
     
+    private func configureCommunication() {
+        catsToken = rootView.publisher.sink { [weak self] message in
+            switch message {
+                case .load:
+                    self?.getBreeds()
+                case .sort:
+                    self?.sortCats()
+                case .delete:
+                    print("Delete in list (error in messages)")
+                case .add:
+                    print("Add in list (error in messages)")
+                case .none:
+                    print("Nothing there")
+            }
+        }
+    }
     
 }

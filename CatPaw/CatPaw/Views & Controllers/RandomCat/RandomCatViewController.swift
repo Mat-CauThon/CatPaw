@@ -10,14 +10,13 @@ import Foundation
 import SwiftUI
 import Combine
 
-
-
 final class RandomCatViewController: UIHostingController<RandomCatView>, UIViewControllerDelegate {
     
     private let loadLimit = 4
-    var queryItems: [URLQueryItem] = [URLQueryItem(name: "page", value: "1"), URLQueryItem(name: "mime_types", value: "jpg"),URLQueryItem(name: "limit", value: "4")]
+    internal var queryItems: [URLQueryItem] = [URLQueryItem(name: "page", value: "1"), URLQueryItem(name: "mime_types", value: "jpg"),URLQueryItem(name: "limit", value: "4")]
     private var randomToken: Cancellable?
     private var network: Networking?
+    private var database: Database?
     
     public func alarm(message: String) {
         self.presentAlert(with: message)
@@ -26,6 +25,7 @@ final class RandomCatViewController: UIHostingController<RandomCatView>, UIViewC
 
     override init(rootView: RandomCatView) {
         super.init(rootView: rootView)
+        database = Database()
         network = Networking(delegate: self)
         configureCommunication()
     }
@@ -54,10 +54,9 @@ final class RandomCatViewController: UIHostingController<RandomCatView>, UIViewC
             }
         }
     }
+    
     private func getSubCat() {
-        
-        let last = self.rootView.source.randomCats.removeFirst()
-        print("last id = \(last.id)")
+        self.rootView.source.randomCats.removeFirst()
         if self.rootView.source.randomCats.count < 1 {
             self.rootView.source.randomState = .loading
         }
@@ -66,13 +65,14 @@ final class RandomCatViewController: UIHostingController<RandomCatView>, UIViewC
     
     private func configureCommunication() {
         randomToken = rootView.publisher.sink { [weak self] message in
-            
             switch message {
                 case .load:
                     self?.rootView.source.randomState = .loading
                     self?.getCat()
                 case .add:
-                    self?.rootView.source.save()
+                    if let saved = self?.rootView.source.save() {
+                        self?.database?.saveCat(cat: saved)
+                    }
                     self?.getSubCat()
                 case .delete:
                     self?.getSubCat()
@@ -81,8 +81,6 @@ final class RandomCatViewController: UIHostingController<RandomCatView>, UIViewC
                 case .none:
                     print("Nothing there")
             }
-            
-            
         }
     }
     
