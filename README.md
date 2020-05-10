@@ -1,6 +1,6 @@
 # CatPaw
 
-Tinder for cats!
+Tinder for cats and more!
 
 ## Getting Started
 
