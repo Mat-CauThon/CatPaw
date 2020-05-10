@@ -10,7 +10,7 @@ Hello there, this app made with love!
 
 -[TableView] Warning once only: UITableView was told to layout its visible cells and other contents without being in the view hierarchy (the table view or one of its superviews has not been added to a window).
 
-So, it happens cause I used SwiftUI and UITabBarController. Hope Apple provide some issue to fix it a problem. But this problem never come to fatal Errors in the application.
+So, it happens cause I used SwiftUI and UITabBarController. Hope Apple provide some issue to fix this problem. But this problem never come to fatal Errors in the application (fortunately), but it can use additional perform (also need to check).
 
 -[LayoutConstraints] Unable to simultaneously satisfy constraints. Probably at least one of the constraints in the following list is one you don't want.
 
