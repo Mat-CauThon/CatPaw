@@ -15,7 +15,6 @@ So, it happens cause I used SwiftUI and UITabBarController. Hope Apple provide s
 -[LayoutConstraints] Unable to simultaneously satisfy constraints. Probably at least one of the constraints in the following list is one you don't want.
 
 I think it a very funny warning, cause Apple doesn't fix it more than year.
-https://github.com/lionheart/openradar-mirror/issues/21120
 * [OpenRadar](http://openradar.appspot.com/49289931) - Article on the OpenRadar
 * [GitHub](https://github.com/lionheart/openradar-mirror/issues/21120) - GitHub talk about it 
 
