@@ -4,7 +4,7 @@ Tinder for cats and more!
 
 ## Getting Started
 
-Hello there, this app made with love!
+Hello there, this app was made with love!
 
 ### Warnings Info
 
