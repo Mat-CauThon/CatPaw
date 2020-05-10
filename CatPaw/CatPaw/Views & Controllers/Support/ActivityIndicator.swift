@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-// used for indicate loading from network or database
+// used for indicate loading from network in RandomCatView
 struct ActivityIndicator: Shape {
     var fillPoint: Double
     var delayPoint: Double = 0.5

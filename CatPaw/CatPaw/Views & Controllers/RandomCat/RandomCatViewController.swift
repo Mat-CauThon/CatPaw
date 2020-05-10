@@ -12,16 +12,11 @@ import Combine
 
 final class RandomCatViewController: UIHostingController<RandomCatView>, UIViewControllerDelegate {
     
-    private let loadLimit = 4
+    private let loadLimit = 4 //for the user, it be "invisible" loading of new cats
     internal var queryItems: [URLQueryItem] = [URLQueryItem(name: "page", value: "1"), URLQueryItem(name: "mime_types", value: "jpg"),URLQueryItem(name: "limit", value: "4")]
     private var randomToken: Cancellable?
     private var network: Networking?
     private var database: Database?
-    
-    public func alarm(message: String) {
-        self.presentAlert(with: message)
-        self.rootView.source.randomState = .failed
-    }
 
     override init(rootView: RandomCatView) {
         super.init(rootView: rootView)
@@ -34,8 +29,12 @@ final class RandomCatViewController: UIHostingController<RandomCatView>, UIViewC
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    public func alarm(message: String) {
+        self.presentAlert(with: message)
+    }
+    
+    func afterFailed() {
+        self.rootView.source.randomState = .failed
     }
     
     func getCat() {
@@ -46,8 +45,10 @@ final class RandomCatViewController: UIHostingController<RandomCatView>, UIViewC
                 DispatchQueue.main.async {
                     if let newCat = randomCat {
                         self?.rootView.source.randomCats.append(newCat)
-                        if self!.rootView.source.randomCats.count >= self!.loadLimit {
-                            self?.rootView.source.randomState = .ready
+                        if let count = self?.rootView.source.randomCats.count, let limit = self?.loadLimit {
+                            if count >= limit {
+                                self?.rootView.source.randomState = .ready
+                            }
                         }
                     }
                 }

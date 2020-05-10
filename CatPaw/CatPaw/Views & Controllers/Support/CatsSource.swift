@@ -26,11 +26,14 @@ final class CatsSource: ObservableObject {
     @Published var randomState = loadingState.loading
     @Published var savedState = loadingState.loading
     
-    public func save() -> CatClass {
-        let catForSave = randomCats.first!
-        catForSave.liked = true
-        savedCats.append(catForSave)
-        return catForSave
+    //call it if you have at least 1 cat in randomCats
+    public func save() -> CatClass? {
+        if let catForSave = randomCats.first {
+            catForSave.liked = true
+            savedCats.append(catForSave)
+            return catForSave
+        }
+        return nil
     }
     
 }

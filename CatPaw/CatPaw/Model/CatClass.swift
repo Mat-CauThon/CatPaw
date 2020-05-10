@@ -18,12 +18,12 @@ final class CatClass: Identifiable {
     // important: be careful when call without background thread
     init(id: String, url: URL?, breeds: [Breed], image: Data?) {
         self.id = id
-        self.image = UIImage(systemName: "xmark.octagon.fill")!
+        self.image = UIImage(systemName: "xmark.circle.fill")!
         self.breeds = breeds
         
         
         if let img = image { // load from database
-            self.image = UIImage(data: img) ?? UIImage(systemName: "xmark.octagon.fill")!
+            self.image = UIImage(data: img) ?? UIImage(systemName: "xmark.circle.fill")!
         } else { // load from web in background thread from Networking class
             if let safeUrl = url {
                 if let data = try? Data(contentsOf: safeUrl) {

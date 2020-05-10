@@ -21,34 +21,55 @@ struct ListOfCatsView: View {
                 return false
             }
         }
+        if source.breedState.count == 0 {
+            return false
+        }
         return true
     }
     
     var body: some View {
-        
-        VStack {
-            
-            if checkBreedsState() {
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        self.publisher.send(.sort)
-                    }) {
+        NavigationView {
+            VStack {
+                if checkBreedsState() {
+                    HStack {
                         HStack {
-                            Image(systemName: "line.horizontal.3.decrease.circle.fill")
+                            Image(systemName: "line.horizontal.3.decrease")
                             Text(items[source.catsSortedIndex])
+                            
+                        }.onTapGesture {
+                            self.publisher.send(.sort)
+                        }
+                            .foregroundColor(.blue)
+                            .scaledToFit()
+                            .padding(20)
+                        
+                        Spacer()
+                        
+                        HStack {
+                            Image(systemName: "arrow.clockwise")
+                        }.onTapGesture {
+                            self.publisher.send(.delete)
+                        }
+                            .foregroundColor(.blue)
+                            .scaledToFit()
+                            .padding(20)
+                    }
+                }
+                List {
+                    ForEach(source.cats, id: \.id) { cat in
+                        ZStack {
+                            CatRow(cat: cat)
+                            NavigationLink(destination: BreedDetailView(breedCat: cat, breed: cat.breeds.first!)) { //.buttonStyle(PlainButtonStyle()) doesn't work, but this example does
+                                EmptyView()
+                            }.frame(width: 0)
                         }
                     }
-                    .scaledToFit()
-                    .padding(20)
+                        .cornerRadius(20)
+                        .shadow(color: Color(UIColor.systemGray4), radius: 5)
                 }
-            }
-            List {
-                ForEach(source.cats, id: \.id) { cat in
-                    CatRow(cat: cat)
-                }
-            }
-        }
+                
+            }.navigationBarTitle("Breeds")
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
 }

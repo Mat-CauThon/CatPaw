@@ -18,10 +18,6 @@ final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIVie
     private var network: Networking?
     private var database: Database?
     
-    public func alarm(message: String) {
-        self.presentAlert(with: message)
-    }
-    
     override init(rootView: ListOfCatsView) {
         super.init(rootView: rootView)
         database = Database()
@@ -33,8 +29,20 @@ final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIVie
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    public func alarm(message: String) {
+        self.presentAlert(with: message)
+    }
+    
+    func afterFailed() {
+        let breeds = self.database?.loadBreeds()
+        if let safeBreeds = breeds{
+            for breed in safeBreeds {
+                if let cat = self.database?.loadCatForBreed(breedId: breed.id) {
+                    self.rootView.source.cats.append(cat)
+                    self.rootView.source.breedState.append(.ready)
+                }
+            }
+        }
     }
     
     private func getCat() {
@@ -42,7 +50,9 @@ final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIVie
             DispatchQueue.main.async {
                 if let newCat = randomCat {
                     self?.rootView.source.cats.append(newCat)
-                    self?.rootView.source.breedState[(self?.rootView.source.cats.count)!-1] = .ready
+                    if let count = self?.rootView.source.cats.count {
+                        self?.rootView.source.breedState[count-1] = .ready
+                    }
                     self?.database?.saveCat(cat: newCat)
                 }
             }
@@ -75,27 +85,29 @@ final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIVie
         let currentIndex = SortIdentifier(rawValue: currentRaw)
         self.rootView.source.catsSortedIndex = currentRaw
         self.rootView.source.cats.sort { (first, second) -> Bool in
-            switch currentIndex {
-            case .Alphabet:
-                return first.breeds.last!.name < second.breeds.last!.name
-            case .Adaptability:
-                return first.breeds.last!.adaptability > second.breeds.last!.adaptability
-            case .Rare:
-                return first.breeds.last!.rare > second.breeds.last!.rare
-            case .Intelligence:
-                return first.breeds.last!.intelligence > second.breeds.last!.intelligence
-            case .Grooming:
-                return first.breeds.last!.grooming > second.breeds.last!.grooming
-            case .Hairless:
-                return first.breeds.last!.hairless > second.breeds.last!.hairless
-            case .Vocalisation:
-                return first.breeds.last!.vocalisation > second.breeds.last!.vocalisation
-            case .Hypoallergenic:
-                return first.breeds.last!.hypoallergenic > second.breeds.last!.hypoallergenic
-            case .none:
-                print("Some error")
-                return true
+            if let firstBreed = first.breeds.last, let secondBreed = second.breeds.last {
+                switch currentIndex {
+                case .Alphabet:
+                    return firstBreed.name < secondBreed.name
+                case .Adaptability:
+                    return firstBreed.adaptability > secondBreed.adaptability
+                case .Rare:
+                    return firstBreed.rare > secondBreed.rare
+                case .Intelligence:
+                    return firstBreed.intelligence > secondBreed.intelligence
+                case .Grooming:
+                    return firstBreed.grooming > secondBreed.grooming
+                case .Hairless:
+                    return firstBreed.hairless > secondBreed.hairless
+                case .Vocalisation:
+                    return firstBreed.vocalisation > secondBreed.vocalisation
+                case .Hypoallergenic:
+                    return firstBreed.hypoallergenic > secondBreed.hypoallergenic
+                case .none:
+                    print("Some error")
+                }
             }
+            return true
         }
     }
     
@@ -107,7 +119,10 @@ final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIVie
                 case .sort:
                     self?.sortCats()
                 case .delete:
-                    print("Delete in list (error in messages)")
+                    self?.rootView.source.breedState = []
+                    self?.rootView.source.cats = []
+                    self?.database?.removeNotLikedCats()
+                    self?.getBreeds()
                 case .add:
                     print("Add in list (error in messages)")
                 case .none:

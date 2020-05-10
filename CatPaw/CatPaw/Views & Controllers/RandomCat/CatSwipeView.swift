@@ -13,10 +13,10 @@ struct CatSwipeView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @State var translation: CGSize = .zero
-    internal var thresholdPercentage: CGFloat = 0.5 // when the user has draged 50% the width of the screen in either direction
+    internal var thresholdPercentage: CGFloat = 0.4 // when the user has draged 40% the width of the screen in either direction
     internal var cat: CatClass
     internal var rootView: RandomCatView
-    @State var message = Message.add
+    @State var message = Message.none
     
     private func getGesturePercentage(_ geometry: GeometryProxy, from gesture: DragGesture.Value) -> CGFloat {
         gesture.translation.width / geometry.size.width
@@ -27,10 +27,13 @@ struct CatSwipeView: View {
             ZStack {
                 Rectangle()
                     .foregroundColor(self.colorScheme == .dark ? Color.black : Color.white)
+                    .cornerRadius(20)
                 Image(uiImage: self.cat.image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .cornerRadius(20)
                     .padding(10)
+                    
             }
             .animation(.interactiveSpring())
             .offset(x: self.translation.width, y: 0)
@@ -52,7 +55,6 @@ struct CatSwipeView: View {
                         if abs(self.getGesturePercentage(geo, from: value)) > self.thresholdPercentage {
                             self.rootView.fillPoint = 0.0
                             self.rootView.publisher.send(self.message)
-                            
                         } else {
                             self.translation = .zero
                         }

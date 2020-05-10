@@ -16,7 +16,6 @@ final class Database {
     private var breedsFetchedResultsController: NSFetchedResultsController<BaseBreed>
     private let catFetchRequest: NSFetchRequest<BaseCat> = BaseCat.fetchRequest()
     private let breedFetchRequest: NSFetchRequest<BaseBreed> = BaseBreed.fetchRequest()
-    private var breeds: [BaseBreed] = []
     
     init() {
         catFetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
@@ -37,12 +36,12 @@ final class Database {
         do {
             try breedsFetchedResultsController.performFetch()
         } catch let error {
-            print(error)
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
         
         var breeds: [Breed] = []
         if let savedBreeds = breedsFetchedResultsController.fetchedObjects {
-            self.breeds = savedBreeds
             for breed in savedBreeds {
                 breeds.append(breed.retBreed())
             }
@@ -56,7 +55,8 @@ final class Database {
         do {
             try breedsFetchedResultsController.performFetch()
         } catch let error {
-            print(error)
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
         if let fetched = breedsFetchedResultsController.fetchedObjects {
             for breed in fetched {
@@ -67,7 +67,7 @@ final class Database {
     }
     
     public func saveBreed(breed: Breed) {
-        let toSave = BaseBreed(context: context)
+        let toSave = BaseBreed(context: PersistentService.context)
         toSave.adaptability = Int16(breed.adaptability)
         toSave.desc = breed.desc
         toSave.grooming = Int16(breed.grooming)
@@ -79,11 +79,11 @@ final class Database {
         toSave.rare = Int16(breed.rare)
         toSave.temperament = breed.temperament
         toSave.vocalisation = Int16(breed.vocalisation)
-        self.breeds.append(toSave)
         do {
             try context.save()
-        } catch {
-            print(error)
+        } catch let error {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
     
@@ -92,10 +92,10 @@ final class Database {
         do {
             try count = context.count(for: breedFetchRequest)
         } catch {
-            print(error)
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
         if count != breeds.count {
-            
             var forSave = breeds
             for item in loadBreeds() {
                 forSave = forSave.filter { (breed) -> Bool in
@@ -108,25 +108,14 @@ final class Database {
         }
     }
     
-    public func loadCats(savedCats: [BaseCat]) -> [CatClass] {
-        var cats: [CatClass] = []
-        for cat in savedCats {
-            var breeds: [Breed] = []
-            if let safeBreed = loadBreedForId(breedId: cat.breedId ?? "nil") {
-                breeds.append(safeBreed)
-            }
-            cats.append(CatClass(id: cat.id, url: nil, breeds: breeds, image: cat.image))
-        }
-        return cats
-    }
-    
     public func loadCatForBreed(breedId: String) -> CatClass? {
         let predicate = NSPredicate(format: "breedId = %@", breedId)
         catFetchRequest.predicate = predicate
         do {
             try catsFetchedResultsController.performFetch()
         } catch let error {
-            print(error)
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
         var savedCat: CatClass? = nil
         if let fetched = catsFetchedResultsController.fetchedObjects {
@@ -141,26 +130,24 @@ final class Database {
         return savedCat
     }
     
-//    public func loadBreedCats() -> [CatClass] {
-//        do {
-//            try catsFetchedResultsController.performFetch()
-//        } catch let error {
-//            print(error)
-//        }
-//        let fetchedCats = catsFetchedResultsController.fetchedObjects?.filter{ cat -> Bool in
-//            !cat.liked
-//        }
-//        if let fetched = fetchedCats {
-//            return loadCats(savedCats: fetched)
-//        }
-//        return []
-//    }
+    public func loadCats(savedCats: [BaseCat]) -> [CatClass] {
+        var cats: [CatClass] = []
+        for cat in savedCats {
+            var breeds: [Breed] = []
+            if let safeBreed = loadBreedForId(breedId: cat.breedId ?? "nil") {
+                breeds.append(safeBreed)
+            }
+            cats.append(CatClass(id: cat.id, url: nil, breeds: breeds, image: cat.image))
+        }
+        return cats
+    }
     
     public func loadLikedCats() -> [CatClass] {
         do {
             try catsFetchedResultsController.performFetch()
         } catch {
-            print(error)
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
         let fetchedCats = catsFetchedResultsController.fetchedObjects?.filter{ cat -> Bool in
             cat.liked
@@ -176,19 +163,15 @@ final class Database {
         toSave.id = cat.id
         toSave.liked = cat.liked
         toSave.image = cat.image.jpegData(compressionQuality: 0.9)
+        toSave.breedId = nil
         if let breed = cat.breeds.first {
             toSave.breedId = breed.id
         }
         do {
             try context.save()
-        } catch {
-            print(error)
-        }
-    }
-    
-    public func saveCats(cats: [CatClass]) {
-        for cat in cats {
-            saveCat(cat: cat)
+        } catch let error {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
     
@@ -197,6 +180,27 @@ final class Database {
         if let result = try? context.fetch(catFetchRequest) {
             for object in result {
                 context.delete(object)
+                do {
+                    try context.save()
+                } catch let error {
+                    let nserror = error as NSError
+                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                }
+            }
+        }
+    }
+    
+    public func removeNotLikedCats() {
+        catFetchRequest.predicate = NSPredicate.init(format: "liked = %@", "false")
+        if let result = try? context.fetch(catFetchRequest) {
+            for object in result {
+                context.delete(object)
+                do {
+                    try context.save()
+                } catch let error {
+                    let nserror = error as NSError
+                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                }
             }
         }
     }

@@ -10,19 +10,20 @@ import Foundation
 import SwiftUI
 
 struct CatRow: View {
+    
+    @Environment(\.colorScheme) var colorScheme
     var cat: CatClass
     var body: some View {
-        VStack {
-            HStack {
-                Text(cat.breeds.last?.name ?? "Unknown breed")
-                    .bold()
-                Spacer()
-            }
+        ZStack(alignment: .topLeading) {
             Image(uiImage: cat.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+            Text(cat.breeds.last?.name ?? "Unknown breed")
+            .bold()
+            .padding(5)
+            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+            .background(colorScheme == .dark ? Color.black : Color.white)
         }
-        
     }
     
 }

@@ -19,8 +19,6 @@
 		A44C6A7E244BBD2A005A23E4 /* ListOfCatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A7D244BBD2A005A23E4 /* ListOfCatsView.swift */; };
 		A44C6A82244BC05C005A23E4 /* SavedCatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A81244BC05C005A23E4 /* SavedCatsView.swift */; };
 		A44C6A84244BC066005A23E4 /* SavedCatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A83244BC066005A23E4 /* SavedCatsViewController.swift */; };
-		A44C6A87244BC1FC005A23E4 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A86244BC1FC005A23E4 /* HelpView.swift */; };
-		A44C6A89244BC206005A23E4 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A88244BC206005A23E4 /* HelpViewController.swift */; };
 		A44C6A8C244BC2C7005A23E4 /* RecognizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A8B244BC2C7005A23E4 /* RecognizeView.swift */; };
 		A44C6A8E244BC2D3005A23E4 /* RecognizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A8D244BC2D3005A23E4 /* RecognizeViewController.swift */; };
 		A44C6A91244BC6BA005A23E4 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A90244BC6BA005A23E4 /* Networking.swift */; };
@@ -28,6 +26,7 @@
 		A44C6A98244BC814005A23E4 /* CatClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A97244BC814005A23E4 /* CatClass.swift */; };
 		A44C6A9A244BCBA3005A23E4 /* UIViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A99244BCBA3005A23E4 /* UIViewControllerDelegate.swift */; };
 		A44C6A9C244BCE6D005A23E4 /* UIViewControllerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44C6A9B244BCE6D005A23E4 /* UIViewControllerExtention.swift */; };
+		A4569CE42463977200C46B30 /* BreedDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4569CE32463977200C46B30 /* BreedDetailView.swift */; };
 		A456EB0A2455ED5800D45E38 /* CodableBreed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A456EB092455ED5800D45E38 /* CodableBreed.swift */; };
 		A4593BC124601BD20010239E /* CatSwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4593BC024601BD20010239E /* CatSwipeView.swift */; };
 		A4593BC32460263B0010239E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4593BC22460263B0010239E /* Database.swift */; };
@@ -38,6 +37,7 @@
 		A48F0ACC24548C0600B203DE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F0ACB24548C0600B203DE /* ActivityIndicator.swift */; };
 		A4B3F861245CFA1A000354C4 /* SortIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F860245CFA1A000354C4 /* SortIdentifier.swift */; };
 		A4B3F863245CFA3E000354C4 /* CatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F862245CFA3E000354C4 /* CatRow.swift */; };
+		A4FA00862464427E004BE46F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4FA00852464427E004BE46F /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,8 +55,6 @@
 		A44C6A7D244BBD2A005A23E4 /* ListOfCatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfCatsView.swift; sourceTree = "<group>"; };
 		A44C6A81244BC05C005A23E4 /* SavedCatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCatsView.swift; sourceTree = "<group>"; };
 		A44C6A83244BC066005A23E4 /* SavedCatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCatsViewController.swift; sourceTree = "<group>"; };
-		A44C6A86244BC1FC005A23E4 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
-		A44C6A88244BC206005A23E4 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		A44C6A8B244BC2C7005A23E4 /* RecognizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeView.swift; sourceTree = "<group>"; };
 		A44C6A8D244BC2D3005A23E4 /* RecognizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeViewController.swift; sourceTree = "<group>"; };
 		A44C6A90244BC6BA005A23E4 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -64,6 +62,7 @@
 		A44C6A97244BC814005A23E4 /* CatClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatClass.swift; sourceTree = "<group>"; };
 		A44C6A99244BCBA3005A23E4 /* UIViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerDelegate.swift; sourceTree = "<group>"; };
 		A44C6A9B244BCE6D005A23E4 /* UIViewControllerExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtention.swift; sourceTree = "<group>"; };
+		A4569CE32463977200C46B30 /* BreedDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailView.swift; sourceTree = "<group>"; };
 		A456EB092455ED5800D45E38 /* CodableBreed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableBreed.swift; sourceTree = "<group>"; };
 		A4593BC024601BD20010239E /* CatSwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatSwipeView.swift; sourceTree = "<group>"; };
 		A4593BC22460263B0010239E /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -74,6 +73,7 @@
 		A48F0ACB24548C0600B203DE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		A4B3F860245CFA1A000354C4 /* SortIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortIdentifier.swift; sourceTree = "<group>"; };
 		A4B3F862245CFA3E000354C4 /* CatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatRow.swift; sourceTree = "<group>"; };
+		A4FA00852464427E004BE46F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +112,7 @@
 				A44C6A92244BC6BF005A23E4 /* Networking */,
 				A45E4F3C2454AC40006FBCFD /* Views & Controllers */,
 				A44C6A75244BB5A8005A23E4 /* CoreDara Stuff */,
+				A4FA00852464427E004BE46F /* Media.xcassets */,
 				A44C6A6A244BB007005A23E4 /* LaunchScreen.storyboard */,
 				A44C6A6D244BB007005A23E4 /* Info.plist */,
 			);
@@ -124,8 +125,8 @@
 				A4593C01246057C10010239E /* BaseCat+CoreDataClass.swift */,
 				A4593C03246057C10010239E /* BaseBreed+CoreDataClass.swift */,
 				A44C6A73244BB59F005A23E4 /* PersistentService.swift */,
-				A44C6A60244BB002005A23E4 /* CatPaw.xcdatamodeld */,
 				A4593BC22460263B0010239E /* Database.swift */,
+				A44C6A60244BB002005A23E4 /* CatPaw.xcdatamodeld */,
 			);
 			path = "CoreDara Stuff";
 			sourceTree = "<group>";
@@ -145,6 +146,7 @@
 			children = (
 				A44C6A7B244BBD17005A23E4 /* ListOfCatsViewController.swift */,
 				A44C6A7D244BBD2A005A23E4 /* ListOfCatsView.swift */,
+				A4569CE32463977200C46B30 /* BreedDetailView.swift */,
 			);
 			path = ListOfCats;
 			sourceTree = "<group>";
@@ -156,15 +158,6 @@
 				A44C6A81244BC05C005A23E4 /* SavedCatsView.swift */,
 			);
 			path = SavedCats;
-			sourceTree = "<group>";
-		};
-		A44C6A8A244BC20B005A23E4 /* Help */ = {
-			isa = PBXGroup;
-			children = (
-				A44C6A88244BC206005A23E4 /* HelpViewController.swift */,
-				A44C6A86244BC1FC005A23E4 /* HelpView.swift */,
-			);
-			path = Help;
 			sourceTree = "<group>";
 		};
 		A44C6A8F244BC2D8005A23E4 /* Recognize */ = {
@@ -198,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				A48F0ACD2454AA5400B203DE /* Support */,
-				A44C6A8A244BC20B005A23E4 /* Help */,
 				A44C6A8F244BC2D8005A23E4 /* Recognize */,
 				A44C6A85244BC088005A23E4 /* SavedCats */,
 				A44C6A80244BBD68005A23E4 /* ListOfCats */,
@@ -289,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A44C6A6C244BB007005A23E4 /* LaunchScreen.storyboard in Resources */,
+				A4FA00862464427E004BE46F /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +301,6 @@
 				A44C6A79244BB889005A23E4 /* RandomCatView.swift in Sources */,
 				A44C6A9A244BCBA3005A23E4 /* UIViewControllerDelegate.swift in Sources */,
 				A44C6A77244BB86A005A23E4 /* RandomCatViewController.swift in Sources */,
-				A44C6A87244BC1FC005A23E4 /* HelpView.swift in Sources */,
 				A48F0ACC24548C0600B203DE /* ActivityIndicator.swift in Sources */,
 				A4593BC32460263B0010239E /* Database.swift in Sources */,
 				A45B35D6244FC3BB0084738F /* Breed.swift in Sources */,
@@ -316,8 +308,8 @@
 				A44C6A94244BC7BB005A23E4 /* CatsSource.swift in Sources */,
 				A4593C07246057C10010239E /* BaseBreed+CoreDataClass.swift in Sources */,
 				A44C6A91244BC6BA005A23E4 /* Networking.swift in Sources */,
-				A44C6A89244BC206005A23E4 /* HelpViewController.swift in Sources */,
 				A44C6A62244BB002005A23E4 /* CatPaw.xcdatamodeld in Sources */,
+				A4569CE42463977200C46B30 /* BreedDetailView.swift in Sources */,
 				A44C6A8C244BC2C7005A23E4 /* RecognizeView.swift in Sources */,
 				A4B3F863245CFA3E000354C4 /* CatRow.swift in Sources */,
 				A44C6A84244BC066005A23E4 /* SavedCatsViewController.swift in Sources */,
@@ -468,7 +460,7 @@
 				DEVELOPMENT_TEAM = 2J4MPK85U4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CatPaw/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -488,7 +480,7 @@
 				DEVELOPMENT_TEAM = 2J4MPK85U4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CatPaw/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -14,7 +14,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     let defaults = UserDefaults.standard
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         if defaults.bool(forKey: "First") == true {
@@ -31,12 +30,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             let catsSource = CatsSource()
             let savedCats = savedCatsViewController(catsSource: catsSource)
-            let randomCat = randomCatViewController(catsSource: catsSource)
             let listOfCats = listOfCatsViewController(catsSource: catsSource)
-            let help = helpViewControlelr()
+            let randomCat = randomCatViewController(catsSource: catsSource)
             let recognize = recognizeViewController()
             let tabBarController = UITabBarController()
-            tabBarController.setViewControllers([randomCat, listOfCats, savedCats, recognize, help], animated: false)
+            tabBarController.setViewControllers([randomCat, listOfCats, savedCats, recognize], animated: false)
             window.rootViewController = tabBarController
             self.window = window
             window.makeKeyAndVisible()
@@ -45,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func randomCatViewController(catsSource: CatsSource) -> RandomCatViewController {
         let randomCatView = RandomCatView(source: catsSource)
-        let randomCatViewController = RandomCatViewController(rootView: randomCatView/*, saved: saved*/)
+        let randomCatViewController = RandomCatViewController(rootView: randomCatView)
         randomCatViewController.getCat()
         randomCatViewController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "magnifyingglass"), tag: 0)
         return randomCatViewController
@@ -63,15 +61,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let savedView = SavedCatsView(source: catsSource)
         let savedViewController = SavedCatsViewController(rootView: savedView)
         savedViewController.load()
-        savedViewController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "tray.and.arrow.down.fill"), tag: 2)
+        savedViewController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "heart.fill"), tag: 2)
         return savedViewController
-    }
-    
-    func helpViewControlelr() -> UIViewController {
-        let helpView = HelpView()
-        let helpViewControlelr = HelpViewController(rootView: helpView)
-        helpViewControlelr.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "questionmark"), tag: 3)
-        return helpViewControlelr
     }
     
     func recognizeViewController() -> UIViewController {
@@ -80,14 +71,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         recognizeViewControlelr.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "camera.fill"), tag: 4)
         return recognizeViewControlelr
     }
-
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        
-        
-        
-    }
-
 
 }
 

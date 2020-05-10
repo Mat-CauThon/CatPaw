@@ -10,15 +10,15 @@ import Foundation
 import SwiftUI
 import Combine
 
-final class SavedCatsViewController: UIHostingController<SavedCatsView>, UIViewControllerDelegate {
+final class SavedCatsViewController: UIHostingController<SavedCatsView> {
     
-    var queryItems: [URLQueryItem] = []
     private var catsToken: Cancellable?
     private var database: Database?
     
     override init(rootView: SavedCatsView) {
         super.init(rootView: rootView)
         database = Database()
+        configureCommunication()
     }
     
     @objc required dynamic init?(coder aDecoder: NSCoder) {
@@ -26,8 +26,11 @@ final class SavedCatsViewController: UIHostingController<SavedCatsView>, UIViewC
     }
     
     private func configureCommunication() {
-        catsToken = rootView.publisher.sink { [weak self] message in
-            
+        catsToken = rootView.publisher.sink { [weak self] messageID in
+            for index in messageID.enumerated() {
+                self?.database?.removeCat(id: self?.rootView.source.savedCats[index.element].id ?? "")
+            }
+            self?.rootView.source.savedCats.remove(atOffsets: messageID)
         }
     }
     
@@ -35,10 +38,6 @@ final class SavedCatsViewController: UIHostingController<SavedCatsView>, UIViewC
         if let result = self.database?.loadLikedCats() {
             self.rootView.source.savedCats = result
         }
-    }
-    
-    public func alarm(message: String) {
-        self.presentAlert(with: message)
     }
     
 }

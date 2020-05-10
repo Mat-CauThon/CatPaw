@@ -8,8 +8,9 @@
 
 import Foundation
 
-// used for error alarm in Networking or CoreData
+// used for Networking
 protocol UIViewControllerDelegate {
     func alarm(message: String)
+    func afterFailed()
     var queryItems: [URLQueryItem] {get set}
 }
