@@ -20,6 +20,6 @@ I think it a very funny warning, cause Apple doesn't fix it more than year.
 
 ## Author
 
-* **Roman Mishchenko** - *All*
+* **Roman Mishchenko**
 
 
