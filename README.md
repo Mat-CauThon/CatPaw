@@ -4,7 +4,8 @@ Tinder for cats and more!
 
 ## Getting Started
 
-Hello there, this app was made with love!
+Hello there, this app is an example of using SwiftUI in pair with Codable. Also, this app uses TheCatAPI for fetch cats data, CoreData for cashing loaded cat photos and breeds, CoreML for recognizing cat on the photo, and a few tricks.
+You can free use any example of code in this project. If it was helpful or interesting for you please write to me on my [Mail](romanmishchenko34@icloud.com).
 
 ### Warnings Info
 
