@@ -8,10 +8,12 @@ Hello there, this app is an example of using SwiftUI in pair with Codable. Also,
 You can free use any example of code in this project. If it was helpful or interesting for you please write to me on my [Mail](romanmishchenko34@icloud.com).
 
 ## Screens
-![Light](/screenshots/light.png)
-![Dark](/screenshots/dark.png)
-![Breeds](/screenshots/breeds.png)
-![Info](/screenshots/info.png)
+
+Light | Dark
+------------ | -------------
+![Light](/screenshots/light.png) | ![Dark](/screenshots/dark.png)
+![Breeds](/screenshots/lightBreeds.png) | ![Breeds](/screenshots/darkBreeds.png)
+![Info](/screenshots/lightInfo.png) | ![Info](/screenshots/darkInfo.png)
 
 ### Warnings Info
 
