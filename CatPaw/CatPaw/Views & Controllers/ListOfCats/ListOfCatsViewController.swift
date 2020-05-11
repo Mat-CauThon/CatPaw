@@ -16,6 +16,7 @@ final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIVie
     private var loadBreedToken: Cancellable?
     private var network: Networking?
     private var database: Database?
+    private var deleteState = true
     
     override init(rootView: ListOfCatsView) {
         super.init(rootView: rootView)
@@ -81,6 +82,7 @@ final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIVie
                             self?.queryItems.removeLast()
                         }
                     }
+                    self?.deleteState = true
                 }
             }
         }
@@ -125,10 +127,14 @@ final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIVie
                 case .sort:
                     self?.sortCats()
                 case .delete:
-                    self?.rootView.source.breedState = []
-                    self?.rootView.source.cats = []
-                    self?.database?.removeNotLikedCats()
-                    self?.getBreeds()
+                    if self?.deleteState ?? true {
+                        self?.deleteState = false
+                        print("Lol")
+                        self?.rootView.source.breedState = []
+                        self?.rootView.source.cats = []
+                        self?.database?.removeNotLikedCats()
+                        self?.getBreeds()
+                    }
                 case .add:
                     print("Add in list (error in messages)")
                 case .none:
