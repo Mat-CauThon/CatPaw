@@ -6,14 +6,13 @@
 //  Copyright © 2020 Roman Mishchenko. All rights reserved.
 //
 
-import Foundation
 import CoreData
 
 final class Database {
     
-    private var context = PersistentService.context
-    private var catsFetchedResultsController: NSFetchedResultsController<BaseCat>
-    private var breedsFetchedResultsController: NSFetchedResultsController<BaseBreed>
+    private let context = PersistentService.context
+    private let catsFetchedResultsController: NSFetchedResultsController<BaseCat>
+    private let breedsFetchedResultsController: NSFetchedResultsController<BaseBreed>
     private let catFetchRequest: NSFetchRequest<BaseCat> = BaseCat.fetchRequest()
     private let breedFetchRequest: NSFetchRequest<BaseBreed> = BaseBreed.fetchRequest()
     
@@ -39,7 +38,6 @@ final class Database {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-        
         var breeds: [Breed] = []
         if let savedBreeds = breedsFetchedResultsController.fetchedObjects {
             for breed in savedBreeds {

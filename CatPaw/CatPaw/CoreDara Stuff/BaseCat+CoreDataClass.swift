@@ -7,11 +7,10 @@
 //
 //
 
-import Foundation
 import CoreData
 
 
-public class BaseCat: NSManagedObject {
+public final class BaseCat: NSManagedObject {
     
     @nonobjc public class func fetchRequest() -> NSFetchRequest<BaseCat> {
         return NSFetchRequest<BaseCat>(entityName: "BaseCat")

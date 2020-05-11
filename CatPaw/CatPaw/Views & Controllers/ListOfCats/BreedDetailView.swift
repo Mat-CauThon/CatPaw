@@ -9,10 +9,11 @@
 import SwiftUI
 
 struct BreedDetailView: View {
-    var breedCat: CatClass
-    var breed: Breed
     
-    func parameter(text: String, value: Int) -> some View {
+    public var breedCat: CatClass
+    public var breed: Breed
+    
+    private func parameter(text: String, value: Int) -> some View {
         var view: some View {
             HStack {
                 Text(text+":")
@@ -29,7 +30,7 @@ struct BreedDetailView: View {
         return view
     }
     
-    var body: some View {
+    internal var body: some View {
         ScrollView {
             VStack {
                 Image(uiImage: breedCat.image)
@@ -52,4 +53,5 @@ struct BreedDetailView: View {
         }
         .navigationBarTitle(Text(breed.name), displayMode: .inline)
     }
+    
 }

@@ -7,11 +7,10 @@
 //
 //
 
-import Foundation
 import CoreData
 
 
-public class BaseBreed: NSManagedObject {
+public final class BaseBreed: NSManagedObject {
     
     @nonobjc public class func fetchRequest() -> NSFetchRequest<BaseBreed> {
         return NSFetchRequest<BaseBreed>(entityName: "BaseBreed")

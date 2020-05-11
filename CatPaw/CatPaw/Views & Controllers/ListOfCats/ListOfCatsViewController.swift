@@ -6,7 +6,6 @@
 //  Copyright © 2020 Roman Mishchenko. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
 import Combine
 
@@ -33,27 +32,33 @@ final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIVie
         self.presentAlert(with: message)
     }
     
-    func afterFailed() {
-        let breeds = self.database?.loadBreeds()
-        if let safeBreeds = breeds{
-            for breed in safeBreeds {
-                if let cat = self.database?.loadCatForBreed(breedId: breed.id) {
+    internal func afterFailed() {
+        if let safeBreeds = self.database?.loadBreeds() {
+            for i in 0..<safeBreeds.count {
+                if let cat = self.database?.loadCatForBreed(breedId: safeBreeds[i].id) {
                     self.rootView.source.cats.append(cat)
                     self.rootView.source.breedState.append(.ready)
                 }
             }
+            self.rootView.source.isHideBar = self.checkEnd()
         }
     }
     
-    private func getCat() {
-        network?.loadCats(items: queryItems){ [weak self] randomCat in
+    private func checkEnd() -> Bool {
+        return self.rootView.source.breedState.contains(.loading)
+    }
+    
+    private func getCat(number: Int) {
+        network?.loadCats(items: queryItems){ [weak self, number] randomCat in
             DispatchQueue.main.async {
                 if let newCat = randomCat {
                     self?.rootView.source.cats.append(newCat)
-                    if let count = self?.rootView.source.cats.count {
-                        self?.rootView.source.breedState[count-1] = .ready
-                    }
+                    self?.rootView.source.breedState[number] = .ready
+                    self?.rootView.source.isHideBar = self?.checkEnd() ?? true
                     self?.database?.saveCat(cat: newCat)
+                } else {
+                    self?.rootView.source.breedState[number] = .failed
+                    self?.rootView.source.isHideBar = self?.checkEnd() ?? true
                 }
             }
         }
@@ -68,10 +73,11 @@ final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIVie
                         if let cat = self?.database?.loadCatForBreed(breedId: safeBreeds[i].id) {
                             self?.rootView.source.cats.append(cat)
                             self?.rootView.source.breedState.append(.ready)
+                            self?.rootView.source.isHideBar = self?.checkEnd() ?? true
                         } else {
                             self?.rootView.source.breedState.append(.loading)
                             self?.queryItems.append(URLQueryItem(name: "breed_id", value: safeBreeds[i].id))
-                            self?.getCat()
+                            self?.getCat(number: i)
                             self?.queryItems.removeLast()
                         }
                     }

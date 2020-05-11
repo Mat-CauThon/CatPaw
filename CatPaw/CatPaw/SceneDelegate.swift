@@ -9,30 +9,18 @@
 import UIKit
 import SwiftUI
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let defaults = UserDefaults.standard
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
-        if defaults.bool(forKey: "First") == true {
-            
-            print("Second")
-            defaults.set(false, forKey: "First")
-        } else {
-            
-            print("First")
-            defaults.set(true, forKey: "First")
-        }
-
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             let catsSource = CatsSource()
             let savedCats = savedCatsViewController(catsSource: catsSource)
             let listOfCats = listOfCatsViewController(catsSource: catsSource)
             let randomCat = randomCatViewController(catsSource: catsSource)
-            let recognize = recognizeViewController()
+            let recognize = recognizeViewController(catsSource: catsSource)
             let tabBarController = UITabBarController()
             tabBarController.setViewControllers([randomCat, listOfCats, savedCats, recognize], animated: false)
             window.rootViewController = tabBarController
@@ -41,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    func randomCatViewController(catsSource: CatsSource) -> RandomCatViewController {
+    private func randomCatViewController(catsSource: CatsSource) -> RandomCatViewController {
         let randomCatView = RandomCatView(source: catsSource)
         let randomCatViewController = RandomCatViewController(rootView: randomCatView)
         randomCatViewController.getCat()
@@ -49,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return randomCatViewController
     }
     
-    func listOfCatsViewController(catsSource: CatsSource) -> UIViewController {
+    private func listOfCatsViewController(catsSource: CatsSource) -> UIViewController {
         let listOfCatsView = ListOfCatsView(source: catsSource)
         let listController = ListOfCatsViewController(rootView: listOfCatsView)
         listController.getBreeds()
@@ -57,7 +45,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return listController
     }
     
-    func savedCatsViewController(catsSource: CatsSource) -> UIViewController {
+    private func savedCatsViewController(catsSource: CatsSource) -> UIViewController {
         let savedView = SavedCatsView(source: catsSource)
         let savedViewController = SavedCatsViewController(rootView: savedView)
         savedViewController.load()
@@ -65,10 +53,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return savedViewController
     }
     
-    func recognizeViewController() -> UIViewController {
-        let recognizeView = RecognizeView()
+    private func recognizeViewController(catsSource: CatsSource) -> UIViewController {
+        let recognizeView = RecognizeView(source: catsSource)
         let recognizeViewControlelr = RecognizeViewController(rootView: recognizeView)
-        recognizeViewControlelr.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "camera.fill"), tag: 4)
+        recognizeViewControlelr.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "camera.fill"), tag: 3)
         return recognizeViewControlelr
     }
 

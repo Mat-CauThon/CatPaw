@@ -6,27 +6,27 @@
 //  Copyright © 2020 Roman Mishchenko. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
 
 final class CatsSource: ObservableObject {
     
-    enum loadingState {
+    enum LoadingState {
         case loading
         case ready
         case failed
     }
     
-    @Published var breeds: [Breed] = []
-    @Published var cats: [CatClass] = []
-    @Published var randomCats: [CatClass] = []
-    @Published var savedCats: [CatClass] = []
-    @Published var catsSortedIndex: Int = 0
-    @Published var breedState: [loadingState] = []
-    @Published var randomState = loadingState.loading
-    @Published var savedState = loadingState.loading
+    @Published public var randomCats: [CatClass] = []
+    @Published public var cats: [CatClass] = []
+    @Published public var savedCats: [CatClass] = []
+    @Published public var catsSortedIndex: Int = 0
+    @Published public var breedState: [LoadingState] = []
+    @Published public var isHideBar = true
+    @Published public var randomState = LoadingState.loading
+    @Published public var recognizeImage: UIImage?
+    @Published public var recognizeResult: String = ""
+    @Published public var recognizeResultColor = UIColor.systemBackground
     
-    //call it if you have at least 1 cat in randomCats
     public func save() -> CatClass? {
         if let catForSave = randomCats.first {
             catForSave.liked = true

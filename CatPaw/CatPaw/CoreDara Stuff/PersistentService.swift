@@ -6,7 +6,6 @@
 //  Copyright © 2020 Roman Mishchenko. All rights reserved.
 //
 
-import Foundation
 import CoreData
 
 final class PersistentService {
@@ -21,11 +20,6 @@ final class PersistentService {
         let container = NSPersistentContainer(name: "CatPaw")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                print("-----------")
-                print("-----------")
-                print("LOAD ERROR")
-                print("-----------")
-                print("-----------")
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
@@ -41,11 +35,6 @@ final class PersistentService {
                 do {
                     try context.save()
                 } catch {
-                    print("-----------")
-                    print("-----------")
-                    print("SAVE ERROR")
-                    print("-----------")
-                    print("-----------")
                     let nserror = error as NSError
                     fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
                 }

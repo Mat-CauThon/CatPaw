@@ -6,14 +6,14 @@
 //  Copyright © 2020 Roman Mishchenko. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
 
 struct CatRow: View {
     
-    @Environment(\.colorScheme) var colorScheme
-    var cat: CatClass
-    var body: some View {
+    @Environment(\.colorScheme) private var colorScheme
+    internal var cat: CatClass
+    
+    internal var body: some View {
         ZStack(alignment: .topLeading) {
             Image(uiImage: cat.image)
                 .resizable()
@@ -21,7 +21,6 @@ struct CatRow: View {
             Text(cat.breeds.last?.name ?? "Unknown breed")
             .bold()
             .padding(5)
-            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
             .background(colorScheme == .dark ? Color.black : Color.white)
         }
     }

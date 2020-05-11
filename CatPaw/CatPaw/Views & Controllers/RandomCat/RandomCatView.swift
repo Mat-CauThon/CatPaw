@@ -11,9 +11,9 @@ import Combine
 
 struct RandomCatView: View {
     
-    @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var source: CatsSource
-    @State var fillPoint = 0.0
+    @Environment(\.colorScheme) private var colorScheme
+    @ObservedObject public var source: CatsSource
+    @State public var fillPoint = 0.0
     public let publisher = PassthroughSubject<Message,Never>()
     
     private var animation: Animation {
@@ -29,7 +29,6 @@ struct RandomCatView: View {
                 Image(systemName: imgSystmeName)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(5)
                     .foregroundColor(color)
                     .shadow(color: Color(UIColor.systemGray4), radius: 2)
             }
@@ -38,7 +37,7 @@ struct RandomCatView: View {
         return view
     }
 
-    var body: some View {
+    internal var body: some View {
         NavigationView {
             GeometryReader { geometry in
                 VStack {
@@ -83,8 +82,9 @@ struct RandomCatView: View {
                     }
                 }
             }
-            .navigationBarTitle("CatPaw", displayMode: .large)
-        }.navigationViewStyle(StackNavigationViewStyle())
+                .navigationBarTitle("CatPaw", displayMode: .large)
+        }
+            .navigationViewStyle(StackNavigationViewStyle())
     }
     
 }

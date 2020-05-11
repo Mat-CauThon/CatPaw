@@ -40,7 +40,7 @@ final class CodableBreed: Codable {
         return Breed(id: id, adaptability: adaptability, intelligence: intelligence, vocalisation: vocalisation, grooming: grooming, hairless: hairless, desc: desc, hypoallergenic: hypoallergenic, name: name, temperament: temperament, rare: rare)
     }
     
-    func encode(to encoder: Encoder) throws {
+    internal func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(intelligence, forKey: .intelligence)

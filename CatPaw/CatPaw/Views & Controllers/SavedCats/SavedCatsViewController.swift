@@ -6,7 +6,6 @@
 //  Copyright © 2020 Roman Mishchenko. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
 import Combine
 

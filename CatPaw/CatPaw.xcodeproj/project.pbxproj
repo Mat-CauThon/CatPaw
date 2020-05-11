@@ -37,6 +37,10 @@
 		A48F0ACC24548C0600B203DE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F0ACB24548C0600B203DE /* ActivityIndicator.swift */; };
 		A4B3F861245CFA1A000354C4 /* SortIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F860245CFA1A000354C4 /* SortIdentifier.swift */; };
 		A4B3F863245CFA3E000354C4 /* CatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3F862245CFA3E000354C4 /* CatRow.swift */; };
+		A4D753EB24682F4A0024DCFA /* MobileNetV2FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A4D753EA24682F4A0024DCFA /* MobileNetV2FP16.mlmodel */; };
+		A4D753ED24682F6F0024DCFA /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D753EC24682F6F0024DCFA /* ImageProcessor.swift */; };
+		A4D753EF24682FB00024DCFA /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D753EE24682FB00024DCFA /* ImagePickerDelegate.swift */; };
+		A4D753F124682FED0024DCFA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D753F024682FED0024DCFA /* ImagePicker.swift */; };
 		A4FA00862464427E004BE46F /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4FA00852464427E004BE46F /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +77,10 @@
 		A48F0ACB24548C0600B203DE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		A4B3F860245CFA1A000354C4 /* SortIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortIdentifier.swift; sourceTree = "<group>"; };
 		A4B3F862245CFA3E000354C4 /* CatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatRow.swift; sourceTree = "<group>"; };
+		A4D753EA24682F4A0024DCFA /* MobileNetV2FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2FP16.mlmodel; sourceTree = "<group>"; };
+		A4D753EC24682F6F0024DCFA /* ImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
+		A4D753EE24682FB00024DCFA /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
+		A4D753F024682FED0024DCFA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		A4FA00852464427E004BE46F /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +173,10 @@
 			children = (
 				A44C6A8D244BC2D3005A23E4 /* RecognizeViewController.swift */,
 				A44C6A8B244BC2C7005A23E4 /* RecognizeView.swift */,
+				A4D753EE24682FB00024DCFA /* ImagePickerDelegate.swift */,
+				A4D753F024682FED0024DCFA /* ImagePicker.swift */,
+				A4D753EC24682F6F0024DCFA /* ImageProcessor.swift */,
+				A4D753EA24682F4A0024DCFA /* MobileNetV2FP16.mlmodel */,
 			);
 			path = Recognize;
 			sourceTree = "<group>";
@@ -297,14 +309,17 @@
 				A44C6A9C244BCE6D005A23E4 /* UIViewControllerExtention.swift in Sources */,
 				A48F0AC8245476FD00B203DE /* CodableCatClass.swift in Sources */,
 				A44C6A74244BB59F005A23E4 /* PersistentService.swift in Sources */,
+				A4D753EF24682FB00024DCFA /* ImagePickerDelegate.swift in Sources */,
 				A44C6A5D244BB002005A23E4 /* AppDelegate.swift in Sources */,
 				A44C6A79244BB889005A23E4 /* RandomCatView.swift in Sources */,
 				A44C6A9A244BCBA3005A23E4 /* UIViewControllerDelegate.swift in Sources */,
+				A4D753ED24682F6F0024DCFA /* ImageProcessor.swift in Sources */,
 				A44C6A77244BB86A005A23E4 /* RandomCatViewController.swift in Sources */,
 				A48F0ACC24548C0600B203DE /* ActivityIndicator.swift in Sources */,
 				A4593BC32460263B0010239E /* Database.swift in Sources */,
 				A45B35D6244FC3BB0084738F /* Breed.swift in Sources */,
 				A44C6A5F244BB002005A23E4 /* SceneDelegate.swift in Sources */,
+				A4D753EB24682F4A0024DCFA /* MobileNetV2FP16.mlmodel in Sources */,
 				A44C6A94244BC7BB005A23E4 /* CatsSource.swift in Sources */,
 				A4593C07246057C10010239E /* BaseBreed+CoreDataClass.swift in Sources */,
 				A44C6A91244BC6BA005A23E4 /* Networking.swift in Sources */,
@@ -320,6 +335,7 @@
 				A456EB0A2455ED5800D45E38 /* CodableBreed.swift in Sources */,
 				A419078D2456F7B9007D40E2 /* Message.swift in Sources */,
 				A44C6A8E244BC2D3005A23E4 /* RecognizeViewController.swift in Sources */,
+				A4D753F124682FED0024DCFA /* ImagePicker.swift in Sources */,
 				A44C6A98244BC814005A23E4 /* CatClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,6 +471,7 @@
 		A44C6A71244BB007005A23E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CatPaw/Preview Content\"";
 				DEVELOPMENT_TEAM = 2J4MPK85U4;
@@ -475,6 +492,7 @@
 		A44C6A72244BB007005A23E4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CatPaw/Preview Content\"";
 				DEVELOPMENT_TEAM = 2J4MPK85U4;

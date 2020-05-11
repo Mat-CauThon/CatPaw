@@ -9,8 +9,10 @@
 import Foundation
 
 // used for Networking
-protocol UIViewControllerDelegate {
+public protocol UIViewControllerDelegate {
+    
     func alarm(message: String)
     func afterFailed()
     var queryItems: [URLQueryItem] {get set}
+    
 }

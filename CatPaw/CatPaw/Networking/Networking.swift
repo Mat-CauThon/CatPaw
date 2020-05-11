@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 final class Networking {
     
@@ -87,11 +86,16 @@ final class Networking {
                                 for codableBreed in codableCat.breeds {
                                     breedsList.append(codableBreed.retBreed())
                                 }
-                                completion(CatClass(
-                                    id: codableCat.id,
-                                    url: codableCat.url,
-                                    breeds: breedsList,
-                                    image: nil))
+                                let newCat = CatClass(
+                                id: codableCat.id,
+                                url: codableCat.url,
+                                breeds: breedsList,
+                                image: nil)
+                                if newCat.id != "remove" {
+                                    completion(newCat)
+                                } else {
+                                    completion(nil)
+                                }
                             }
                         } catch {
                             DispatchQueue.main.async {

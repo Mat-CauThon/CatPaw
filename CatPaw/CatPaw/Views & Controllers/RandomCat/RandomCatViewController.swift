@@ -6,7 +6,6 @@
 //  Copyright © 2020 Roman Mishchenko. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
 import Combine
 
@@ -33,11 +32,11 @@ final class RandomCatViewController: UIHostingController<RandomCatView>, UIViewC
         self.presentAlert(with: message)
     }
     
-    func afterFailed() {
+    internal func afterFailed() {
         self.rootView.source.randomState = .failed
     }
     
-    func getCat() {
+    public func getCat() {
         if loadLimit - self.rootView.source.randomCats.count > 0 {
             queryItems.removeLast()
             queryItems.append(URLQueryItem(name: "limit", value: String(loadLimit - self.rootView.source.randomCats.count)))
@@ -55,7 +54,7 @@ final class RandomCatViewController: UIHostingController<RandomCatView>, UIViewC
             }
         }
     }
-    
+    // MARK: Remove cat and load additional cats
     private func getSubCat() {
         self.rootView.source.randomCats.removeFirst()
         if self.rootView.source.randomCats.count < 1 {

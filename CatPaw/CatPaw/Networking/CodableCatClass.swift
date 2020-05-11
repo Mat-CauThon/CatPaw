@@ -10,11 +10,11 @@ import Foundation
 
 final class CodableCatClass: Decodable {
     
-    var id: String
-    var url: URL
-    var width: Int
-    var height: Int
-    var breeds: [CodableBreed]
+    public var id: String
+    public var url: URL
+    public var width: Int
+    public var height: Int
+    public var breeds: [CodableBreed]
     
     private enum CodingKeys: String, CodingKey {
         case id

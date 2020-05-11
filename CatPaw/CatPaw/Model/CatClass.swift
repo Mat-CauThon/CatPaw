@@ -6,7 +6,6 @@
 //  Copyright © 2020 Roman Mishchenko. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
 
 final class CatClass: Identifiable {
@@ -20,8 +19,6 @@ final class CatClass: Identifiable {
         self.id = id
         self.image = UIImage(systemName: "xmark.circle.fill")!
         self.breeds = breeds
-        
-        
         if let img = image { // load from database
             self.image = UIImage(data: img) ?? UIImage(systemName: "xmark.circle.fill")!
         } else { // load from web in background thread from Networking class
@@ -30,10 +27,13 @@ final class CatClass: Identifiable {
                     if let dImage = UIImage(data: data) {
                         self.image = dImage
                     }
+                } else {
+                    self.id = "remove"
                 }
             }
         }
     }
+    
 }
 
 
