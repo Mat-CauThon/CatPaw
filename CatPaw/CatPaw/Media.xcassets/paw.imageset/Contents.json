@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "healthcare-and-medical-5.png",
+      "filename" : "paw_24.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "healthcare-and-medical-4.png",
+      "filename" : "paw_48.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "healthcare-and-medical-3.png",
+      "filename" : "paw_72.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

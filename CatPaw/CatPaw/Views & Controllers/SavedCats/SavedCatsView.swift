@@ -14,6 +14,7 @@ struct SavedCatsView: View {
     @Environment(\.colorScheme) private var colorScheme
     @ObservedObject public var source: CatsSource
     public let publisher = PassthroughSubject<IndexSet,Never>()
+    public let sharePublisher = PassthroughSubject<UIImage,Never>()
     
     private func delete(at offsets: IndexSet) {
         publisher.send(offsets)
@@ -23,7 +24,9 @@ struct SavedCatsView: View {
         NavigationView {
             List {
                 ForEach(source.savedCats, id: \.id) { cat in
-                    CatRow(cat: cat)
+                    CatRow(cat: cat).onTapGesture {
+                        self.sharePublisher.send(cat.image)
+                    }
                 }
                 .onDelete(perform: delete)
                 .cornerRadius(20)

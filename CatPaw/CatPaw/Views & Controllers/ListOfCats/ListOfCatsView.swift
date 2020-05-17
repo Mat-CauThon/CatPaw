@@ -34,32 +34,32 @@ struct ListOfCatsView: View {
                 }
                 
             }
-            
-            .navigationBarHidden(source.isHideBar)
-            .navigationBarTitle("Breeds")
-            .navigationBarItems(leading:
-                HStack {
-                    HStack(alignment: .firstTextBaseline) {
-                        Image(systemName: "line.horizontal.3.decrease")
-                        Text(items[source.catsSortedIndex])
-                        Spacer()
-                    }.onTapGesture {
-                        self.publisher.send(.sort)
-                    }
-                        .foregroundColor(.blue)
-                        .scaledToFit()
-                    Spacer()
-                },
-            trailing:
-                HStack {
-                    Image(systemName: "arrow.clockwise")
-                }.onTapGesture {
-                    self.source.isHideBar = true
-                    self.publisher.send(.delete)
-                }
-                    .foregroundColor(.blue)
-                    .scaledToFit()
-            )
+                .navigationBarHidden(source.isHideBar)
+                .navigationBarTitle("Breeds")
+                .navigationBarItems(
+                    leading:
+                        HStack {
+                            HStack(alignment: .firstTextBaseline) {
+                                Image(systemName: "line.horizontal.3.decrease")
+                                Text(items[source.catsSortedIndex])
+                                Spacer()
+                            }.onTapGesture {
+                                self.publisher.send(.sort)
+                            }
+                                .foregroundColor(.blue)
+                                .scaledToFit()
+                            Spacer()
+                        },
+                    trailing:
+                        HStack {
+                            Image(systemName: "arrow.clockwise")
+                        }.onTapGesture {
+                            self.source.isHideBar = true
+                            self.publisher.send(.delete)
+                        }
+                            .foregroundColor(.blue)
+                            .scaledToFit()
+                )
         }.navigationViewStyle(StackNavigationViewStyle())
     }
     

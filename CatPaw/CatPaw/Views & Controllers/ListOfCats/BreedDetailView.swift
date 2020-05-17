@@ -39,7 +39,7 @@ struct BreedDetailView: View {
                     .cornerRadius(5)
                 Text(breed.temperament.capitalized)
                     .bold()
-                    .padding()
+                    .padding(.horizontal)
                 Text(breed.desc)
                     .padding()
                 parameter(text: "Adaptability", value: breed.adaptability)

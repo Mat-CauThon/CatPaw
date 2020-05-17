@@ -12,6 +12,7 @@ import Combine
 final class SavedCatsViewController: UIHostingController<SavedCatsView> {
     
     private var catsToken: Cancellable?
+    private var shareToken: Cancellable?
     private var database: Database?
     
     override init(rootView: SavedCatsView) {
@@ -31,6 +32,12 @@ final class SavedCatsViewController: UIHostingController<SavedCatsView> {
             }
             self?.rootView.source.savedCats.remove(atOffsets: messageID)
         }
+        shareToken = rootView.sharePublisher.sink(receiveValue: { [weak self] image in
+            let shareImage = [image]
+            let activityViewController = UIActivityViewController(activityItems: shareImage, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = UIView() // so that iPads won't crash
+            self?.present(activityViewController, animated: true)
+        })
     }
     
     public func load() {

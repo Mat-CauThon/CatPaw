@@ -129,7 +129,6 @@ final class ListOfCatsViewController: UIHostingController<ListOfCatsView>, UIVie
                 case .delete:
                     if self?.deleteState ?? true {
                         self?.deleteState = false
-                        print("Lol")
                         self?.rootView.source.breedState = []
                         self?.rootView.source.cats = []
                         self?.database?.removeNotLikedCats()
