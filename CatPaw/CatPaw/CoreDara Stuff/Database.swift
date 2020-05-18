@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import SwiftUI
 
 final class Database {
     
@@ -122,7 +123,9 @@ final class Database {
                 if let safeBreed = loadBreedForId(breedId: breedId) {
                     breeds.append(safeBreed)
                 }
-                savedCat = CatClass(id: cat.id, url: nil, breeds: breeds, image: cat.image)
+                if let imageData = cat.image, let image = UIImage(data: imageData) {
+                    savedCat = CatClass(id: cat.id, breeds: breeds, image: image)
+                }
             }
         }
         return savedCat
@@ -135,7 +138,9 @@ final class Database {
             if let safeBreed = loadBreedForId(breedId: cat.breedId ?? "nil") {
                 breeds.append(safeBreed)
             }
-            cats.append(CatClass(id: cat.id, url: nil, breeds: breeds, image: cat.image))
+            if let imageData = cat.image, let image = UIImage(data: imageData) {
+                cats.append(CatClass(id: cat.id, breeds: breeds, image: image))
+            }
         }
         return cats
     }

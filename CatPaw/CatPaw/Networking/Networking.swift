@@ -6,7 +6,7 @@
 //  Copyright © 2020 Roman Mishchenko. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 final class Networking {
     
@@ -86,12 +86,11 @@ final class Networking {
                                 for codableBreed in codableCat.breeds {
                                     breedsList.append(codableBreed.retBreed())
                                 }
-                                let newCat = CatClass(
-                                id: codableCat.id,
-                                url: codableCat.url,
-                                breeds: breedsList,
-                                image: nil)
-                                if newCat.id != "remove" {
+                                if let data = try? Data(contentsOf: codableCat.url), let image = UIImage(data: data) {
+                                    let newCat = CatClass(
+                                    id: codableCat.id,
+                                    breeds: breedsList,
+                                    image: image)
                                     completion(newCat)
                                 } else {
                                     completion(nil)
